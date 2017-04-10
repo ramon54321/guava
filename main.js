@@ -42,6 +42,38 @@ class App extends React.Component {
           </div>
         );
         break;
+      case 'signup':
+        return(
+          <div>
+            <div className="spacer" style={{height: '20vh'}}></div>
+            <div className="sheet">
+              <h2>Sign Up</h2>
+              <div className="field">
+                <input type="text" placeholder="Username"/>
+                <div className="fieldSplitter"></div>
+                <i className="fa fa-user fa-2x" style={{fontSize: '20pt'}}></i>
+              </div>
+              <div className="field">
+                <input type="password" placeholder="Password"/>
+                <div className="fieldSplitter"></div>
+                <i className="fa fa-key fa-2x" style={{fontSize: '20pt'}}></i>
+              </div>
+              <div className="field">
+                <input type="password" placeholder="Confirm Password"/>
+                <div className="fieldSplitter"></div>
+                <i className="fa fa-key fa-2x" style={{fontSize: '20pt'}}></i>
+              </div>
+              <div className="field" style={{paddingLeft: '20pt'}}>
+                <div style={{display: 'inline-block', marginTop: '10pt', marginLeft: '10pt'}}>Teacher Account?</div>
+                <div className="fieldSplitter centered"></div>
+                <input type="checkbox"/>
+              </div>
+              <div className="button" onClick={() => this.switchTo("main")}>SIGN UP</div>
+              <div className="infoCentered">Have an Account? <span className="link" onClick={() => this.switchTo("login")}>Log In!</span></div>
+            </div>
+          </div>
+        );
+        break;
       default:
         return (null);
     }

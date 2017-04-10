@@ -1,7 +1,9 @@
+@charset "UTF-8";
 body {
-  background-color: whitesmoke;
+  background-color: #f5f5f5;
   color: #333333;
-  font-family: "Open Sans", sans-serif; }
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased; }
 
 .spacer {
   width: 100%;
@@ -14,12 +16,13 @@ body {
   padding: 22pt;
   padding-top: 10pt;
   padding-bottom: 10pt;
-  background-color: white;
+  background-color: #ffffff;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%);
+  transition: 2s; }
 
 h2 {
   border-bottom: solid 1px rgba(0, 0, 0, 0.6);
@@ -31,11 +34,11 @@ h2 {
   margin-top: 16pt;
   text-align: center;
   background-color: #3fabab;
-  color: white;
+  color: #ffffff;
   height: 36pt;
   line-height: 36pt;
   font-weight: bold;
-  transition: 0.5s;
+  transition: background-color 0.5s;
   cursor: pointer; }
   .button:hover {
     background-color: #318686; }
@@ -51,11 +54,12 @@ span.link {
   transition: 0.5s; }
   span.link:hover {
     color: #318686;
-    transform: translateY(-5px); }
+    transform: translateY(-2px); }
 
 .field {
   position: relative;
-  margin-top: 16pt; }
+  margin-top: 16pt;
+  min-height: 36pt; }
 
 i {
   position: absolute;
@@ -71,7 +75,29 @@ i {
   position: absolute;
   top: 5pt;
   left: 42pt; }
+  .fieldSplitter.centered {
+    left: 140pt; }
 
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  position: absolute;
+  top: 9pt;
+  left: 140pt;
+  margin-left: 14pt;
+  width: 16pt;
+  height: 16pt;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  transition: background-color 0.5s, border-color 0.5s; }
+  input[type="checkbox"]:hover {
+    border-color: #3fabab; }
+  input[type="checkbox"]:checked {
+    background-color: #3fabab; }
+    input[type="checkbox"]:checked::after {
+      content: "✔";
+      color: #f5f5f5;
+      font-size: 12pt;
+      padding-left: 2pt; }
 input[type="text"], input[type="password"] {
   width: calc(100% - 2px - 52pt);
   height: 36pt;
@@ -84,3 +110,5 @@ input[type="text"], input[type="password"] {
     border: solid 1px #3fabab; }
   input[type="text"]:hover ~ i, input[type="password"]:hover ~ i {
     color: #3fabab; }
+
+/*# sourceMappingURL=style.css.map */

@@ -13,6 +13,7 @@ body
   background-color: $backgroundColor
   color: $fontColor
   font-family: 'Open Sans', sans-serif
+  -webkit-font-smoothing: subpixel-antialiased
 
 .spacer
   width: 100%
@@ -31,6 +32,7 @@ body
   top: 50%
   left: 50%
   transform: translate(-50%, -50%)
+  transition: 2s
 
 h2
   border-bottom: solid 1px $titleUnderline
@@ -46,7 +48,7 @@ h2
   height: 36pt
   line-height: 36pt
   font-weight: bold
-  transition: 0.5s
+  transition: background-color 0.5s
   cursor: pointer
 
   &:hover
@@ -64,11 +66,12 @@ span
     transition: 0.5s
     &:hover
       color: $primaryColorDark
-      transform: translateY(-5px)
+      transform: translateY(-2px)
 
 .field
   position: relative
   margin-top: 16pt
+  min-height: 36pt
 
 i
   position: absolute
@@ -84,8 +87,31 @@ i
   position: absolute
   top: 5pt
   left: 42pt
+  &.centered
+    left: 140pt
 
 input
+  &[type="checkbox"]
+    -webkit-appearance: none
+    position: absolute
+    top: 9pt
+    left: 140pt
+    margin-left: 14pt
+    width: 16pt
+    height: 16pt
+    border: solid 1px $lightSeparator
+    background-color: $backgroundColor_sheet
+    transition: background-color 0.5s, border-color 0.5s
+    &:hover
+      border-color: $primaryColor
+    &:checked
+      background-color: $primaryColor
+      &::after
+        content: '\2714'
+        color: $backgroundColor
+        font-size: 12pt
+        padding-left: 2pt
+
   &[type="text"], &[type="password"]
     width: calc(100% - 2px - 52pt)
     height: 36pt
