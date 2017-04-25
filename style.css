@@ -53,8 +53,7 @@ span.link {
   color: #3fabab;
   transition: 0.5s; }
   span.link:hover {
-    color: #318686;
-    transform: translateY(-2px); }
+    color: #318686; }
 
 .field {
   position: relative;
