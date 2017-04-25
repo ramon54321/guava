@@ -1,0 +1,42 @@
+// User
+{
+  "ID": "7",
+  "Type": "T",
+  "Name": "Elon Musk",
+  "Password": "rocketry"
+}
+
+// Course
+{
+  "ID": "4",
+  "Title": "Modeling"
+}
+
+// Enrollment
+{
+  "ID": "28",
+  "CourseID": "4",
+  "UserID": "7"
+}
+
+// Assignment
+{
+  "ID": "4",
+  "CourseID": "5",
+  "TeacherUserID": "7",
+  "DueDate": "2012-04-23T18:25:43Z",
+  "Title": "UML Diagram 4",
+  "Description": "Draw a sequence diagram for your project.",
+  "MaxGrade": "5"
+}
+
+// Submission
+{
+  "ID": "34",
+  "AssignmentID": "4",
+  "StudentUserID": "7",
+  "Answer": "This is my answer to the assignment on UML Diagram 4.",
+  "SubmittedDate": "2012-04-23T18:25:43Z",
+  "Grade": "4",
+  "Comment": "Well done, but there are parts that need to be redone."
+}
