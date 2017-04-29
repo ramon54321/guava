@@ -5,11 +5,13 @@
  */
 package guava;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Hannu
  */
-public class User {
+public class User implements Serializable, Comparable<User> {
     
     private int id;
     private String name;
@@ -60,7 +62,20 @@ public class User {
     }
     
     public String toString() {
-        return "Id: " + this.id + "Name: " + this.name + ", is teacher: " + this.isTeacher;
+        return "Id: " + this.id + ", Name: " + this.name + ", is teacher: " + this.isTeacher;
+    }
+
+    @Override
+    public int compareTo(User user) {
+        if (this.id > user.id) {
+            return 1;
+        }
+        else if (this.id < user.id) {
+            return -1;
+        } 
+        else {
+            return 0;
+        }
     }
     
 }
