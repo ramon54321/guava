@@ -50,7 +50,7 @@ h2 {
   position: relative;
   margin-top: 16pt;
   text-align: center;
-  background-color: #BBabab;
+  background-color: #FFabab;
   color: #ffffff;
   height: 36pt;
   line-height: 36pt;
@@ -62,7 +62,7 @@ h2 {
     height: 30pt;
     line-height: 30pt; }
   .button:hover {
-    background-color: #a48f8f; }
+    background-color: #ff7878; }
 
 .infoCentered {
   text-align: center;
@@ -89,10 +89,10 @@ h2 {
 span.link {
   cursor: pointer;
   display: inline-block;
-  color: #BBabab;
+  color: #FFabab;
   transition: 0.5s; }
   span.link:hover {
-    color: #a48f8f; }
+    color: #ff7878; }
 
 .field {
   position: relative;
@@ -128,9 +128,9 @@ input[type="checkbox"] {
   background-color: #ffffff;
   transition: background-color 0.5s, border-color 0.5s; }
   input[type="checkbox"]:hover {
-    border-color: #BBabab; }
+    border-color: #FFabab; }
   input[type="checkbox"]:checked {
-    background-color: #BBabab; }
+    background-color: #FFabab; }
     input[type="checkbox"]:checked::after {
       content: "✔";
       color: #f5f5f5;
@@ -145,8 +145,8 @@ input[type="text"], input[type="password"] {
   padding-left: 52pt;
   transition: 0.5s; }
   input[type="text"]:hover, input[type="password"]:hover {
-    border: solid 1px #BBabab; }
+    border: solid 1px #FFabab; }
   input[type="text"]:hover ~ i, input[type="password"]:hover ~ i {
-    color: #BBabab; }
+    color: #FFabab; }
 
 /*# sourceMappingURL=style.css.map */
