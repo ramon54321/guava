@@ -1,11 +1,93 @@
+var mainSheet;
+
 
 // Components
+
+class TableLine extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = { submitted: false, graded: false };
+  }
+
+  submitAssignment() {
+    this.setState({
+        submitted: true
+    });
+  }
+
+  gradeAssignment() {
+    this.setState({
+        submitted: true
+    });
+  }
+
+  render(){
+    var self = this;
+    return (
+      <div className="assignmentRow">
+        <div className="assignmentCell">
+          <div className="textCenter">
+
+          </div>
+        </div>
+        <div className="assignmentCell">
+          <div className="textCenter">
+            {this.props.title}
+          </div>
+        </div>
+        <div className="assignmentCell">
+          <div className="textCenter">
+            {this.props.dueDate}
+          </div>
+        </div>
+        <div className="assignmentCell">
+          <div className="textCenter">
+            {this.props.grade}/{this.props.maxGrade}
+          </div>
+        </div>
+        <div className="assignmentCell">
+          <div className="textCenter">
+            {function() {
+              if(self.state.submitted){
+                return ("SUBMITTED");
+              } else {
+                return (<div className="button small" onClick={function(){
+                  mainSheet.setState(prevState => ({currentPopup:
+                    <div className="popupBack">
+                      <div className="sheet">
+                        <h2>Submit Assignment</h2>
+                        <div className="field">
+                          <input type="text" placeholder="Username"/>
+                          <div className="fieldSplitter"></div>
+                          <i className="fa fa-user fa-2x" style={{fontSize: '20pt'}}></i>
+                        </div>
+                        <div className="field">
+                          <input type="password" placeholder="Password"/>
+                          <div className="fieldSplitter"></div>
+                          <i className="fa fa-key fa-2x" style={{fontSize: '20pt'}}></i>
+                        </div>
+                        <div className="button" onClick={() => this.switchTo("assignments")}>LOG IN</div>
+                        <div className="infoCentered">New Here? <span className="link" onClick={() => this.switchTo("signup")}>Sign Up!</span></div>
+                      </div>
+                    </div>}));
+                }}>SUBMIT</div>);
+              }
+            }()}
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
 
 class App extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = { page: 'login' };
+    this.state = { page: 'login', currentPopup: null};
+
+    mainSheet = this;
 
     // Function bindings
     this.switchTo = this.switchTo.bind(this);
@@ -19,10 +101,17 @@ class App extends React.Component {
   }
 
   render(){
+    let self = this;
     switch (this.state.page) {
       case 'login':
         return (
           <div>
+            {function(){
+              if(self.state.currentPopup !== null) {
+                console.log("Rendering popup!");
+                return (self.state.currentPopup);
+              }
+            }()}
             <div className="spacer" style={{height: '20vh'}}></div>
             <div className="sheet">
               <h2>Log In</h2>
@@ -36,7 +125,7 @@ class App extends React.Component {
                 <div className="fieldSplitter"></div>
                 <i className="fa fa-key fa-2x" style={{fontSize: '20pt'}}></i>
               </div>
-              <div className="button" onClick={() => this.switchTo("main")}>LOG IN</div>
+              <div className="button" onClick={() => this.switchTo("assignments")}>LOG IN</div>
               <div className="infoCentered">New Here? <span className="link" onClick={() => this.switchTo("signup")}>Sign Up!</span></div>
             </div>
           </div>
@@ -45,6 +134,12 @@ class App extends React.Component {
       case 'signup':
         return(
           <div>
+            {function(){
+              if(self.state.currentPopup !== null) {
+                console.log("Rendering popup!");
+                return (self.state.currentPopup);
+              }
+            }()}
             <div className="spacer" style={{height: '20vh'}}></div>
             <div className="sheet">
               <h2>Sign Up</h2>
@@ -68,8 +163,29 @@ class App extends React.Component {
                 <div className="fieldSplitter centered"></div>
                 <input type="checkbox"/>
               </div>
-              <div className="button" onClick={() => this.switchTo("main")}>SIGN UP</div>
+              <div className="button" onClick={() => this.switchTo("login")}>SIGN UP</div>
               <div className="infoCentered">Have an Account? <span className="link" onClick={() => this.switchTo("login")}>Log In!</span></div>
+            </div>
+          </div>
+        );
+        break;
+      case 'assignments':
+        var titles = ['UML Diagram 1', 'Learn Maven', 'Presentation'];
+
+        return(
+          <div>
+            {function(){
+              if(self.state.currentPopup !== null) {
+                console.log("Rendering popup!");
+                return (self.state.currentPopup);
+              }
+            }()}
+            <div className="spacer" style={{height: '20vh'}}></div>
+            <div className="sheet main">
+              <h2>Assignments</h2>
+              {titles.map(function(title, index){
+                    return <TableLine title={title} dueDate="26 March" grade="4" maxGrade="5"/>;
+                  })}
             </div>
           </div>
         );
@@ -96,5 +212,20 @@ class Sheet extends React.Component {
     return (<h2>Hello world!</h2>);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+// Set popup
+<div className="button small" onClick={function(){
+  mainSheet.setState(prevState => ({currentPopup: <div className="myPopup">POPUP</div>}));
+}}>SUBMIT</div>
 
 */
