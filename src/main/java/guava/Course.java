@@ -1,36 +1,61 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package guava;
 
-public class Course {
+import java.io.Serializable;
 
+/**
+ *
+ * @author Hannu
+ */
+public class Course implements Serializable, Comparable<Course>{
+    
     private int id;
     private String title;
-
+    
     public Course() {
+        
     }
-
+    
     public Course(int id, String title) {
-	this.id = id;
-	this.title = title;
+        this.id = id;
+        this.title = title;
     }
-
+    
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
-
+    
     public void setTitle(String title) {
-	this.title = title;
+        this.title = title;
     }
-
+    
     public int getId() {
-	return this.id;
+        return this.id;
     }
-
+    
     public String getTitle() {
-	return this.title;
+        return this.title;
+    }
+    
+    public String toString() {
+        return "ID: " + this.id + " --- Title: " + this.title;
     }
 
     @Override
-    public String toString() {
-	return "ID: " + this.id + " --- Title: " + this.title;
+    public int compareTo(Course course) {
+        if (this.id > course.id) {
+            return 1;
+        }
+        else if (this.id < course.id) {
+            return -1;
+        } 
+        else {
+            return 0;
+        }
     }
+    
 }
