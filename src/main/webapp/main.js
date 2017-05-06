@@ -7,7 +7,7 @@ class TableLine extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = { submitted: false, graded: false };
+    this.state = { submitted: false, graded: false, completed: this.props.completed };
   }
 
   submitAssignment() {
@@ -28,7 +28,13 @@ class TableLine extends React.Component {
       <div className="assignmentRow">
         <div className="assignmentCell">
           <div className="textCenter">
-
+            {function() {
+              if(self.state.completed < 50){
+                return (<div className="progressBar" style={{width: self.state.completed + '%'}}></div>);
+              } else {
+                return (<div className="progressBar danger" style={{width: self.state.completed + '%'}}></div>);
+              }
+            }()}
           </div>
         </div>
         <div className="assignmentCell">
@@ -170,7 +176,7 @@ class App extends React.Component {
         );
         break;
       case 'assignments':
-        var titles = ['UML Diagram 1', 'Learn Maven', 'Presentation'];
+        var titles = ['UML Diagram 1', 'Learn Maven', 'Presentation', 'English Worksheet', 'UML Activity Diagram', 'Algorithms Stack Worksheet', 'Java Collections Tutorial'];
 
         return(
           <div>
@@ -184,7 +190,7 @@ class App extends React.Component {
             <div className="sheet main">
               <h2>Assignments</h2>
               {titles.map(function(title, index){
-                    return <TableLine title={title} dueDate="26 March" grade="4" maxGrade="5"/>;
+                    return <TableLine completed={Math.random() * 100} title={title} dueDate="26 March" grade="4" maxGrade="5"/>;
                   })}
             </div>
           </div>
