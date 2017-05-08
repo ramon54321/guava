@@ -1,4 +1,4 @@
-package guava;
+package guava.model;
 
 import java.io.Serializable;
 

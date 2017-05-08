@@ -1,6 +1,6 @@
 package guava.tests;
 
-import guava.Assignment;
+import guava.model.Assignment;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

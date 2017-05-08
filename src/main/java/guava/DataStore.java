@@ -1,5 +1,7 @@
 package guava;
 
+import guava.model.Course;
+
 public class DataStore {
     
     private final BSTree<Course> courses;

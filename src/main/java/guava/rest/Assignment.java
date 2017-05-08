@@ -7,6 +7,6 @@ import javax.ws.rs.Path;
 public class Assignment {
     @GET
     public String getAllAssignments() {
-	return "Version 1";
+	return "Version 3";
     }
 }

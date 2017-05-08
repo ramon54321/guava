@@ -1,4 +1,4 @@
-package guava;
+package guava.model;
 
 public class Submission {
     
