@@ -9,6 +9,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/course")
 public class Course {
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllCourses() {
