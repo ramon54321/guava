@@ -1,7 +1,5 @@
 package guava;
 
-import java.util.Scanner;
-
 public class BSTree<T extends Comparable<T>> {
 
     private Node root;
@@ -79,5 +77,4 @@ public class BSTree<T extends Comparable<T>> {
             this.right = right;
         }
     }
-
 }

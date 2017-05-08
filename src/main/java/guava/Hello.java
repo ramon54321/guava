@@ -7,6 +7,6 @@ import javax.ws.rs.Path;
 public class Hello {
     @GET
     public String message() {
-	return "4th hello!";
+	return "5th hello!";
     }
 }

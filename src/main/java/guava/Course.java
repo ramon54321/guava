@@ -1,23 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package guava;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Hannu
- */
 public class Course implements Serializable, Comparable<Course>{
     
     private int id;
     private String title;
     
     public Course() {
-        
     }
     
     public Course(int id, String title) {
@@ -57,5 +47,4 @@ public class Course implements Serializable, Comparable<Course>{
             return 0;
         }
     }
-    
 }

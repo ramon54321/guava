@@ -1,24 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package guava;
 
-/**
- *
- * @author Hannu
- */
 public class DataStore {
     
-    private final BSTree<Course> Courses;
+    private final BSTree<Course> courses;
     
     public DataStore() {
-        Courses = new BSTree<Course>();
+        courses = new BSTree<>();
     }
     
     public void getCourseBSTree() {
-        
     }
-    
 }
