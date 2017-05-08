@@ -50,7 +50,7 @@ h2 {
   position: relative;
   margin-top: 16pt;
   text-align: center;
-  background-color: #FFabab;
+  background-color: #3295d5;
   color: #ffffff;
   height: 36pt;
   line-height: 36pt;
@@ -62,7 +62,18 @@ h2 {
     height: 30pt;
     line-height: 30pt; }
   .button:hover {
-    background-color: #ff7878; }
+    background-color: #2479b0; }
+
+.progressBar {
+  position: relative;
+  text-align: center;
+  background-color: #3295d5;
+  color: #ffffff;
+  margin-top: 0pt;
+  height: 10pt;
+  transition: background-color 0.5s; }
+  .progressBar.danger {
+    background-color: #cd422f; }
 
 .infoCentered {
   text-align: center;
@@ -89,10 +100,10 @@ h2 {
 span.link {
   cursor: pointer;
   display: inline-block;
-  color: #FFabab;
+  color: #3295d5;
   transition: 0.5s; }
   span.link:hover {
-    color: #ff7878; }
+    color: #2479b0; }
 
 .field {
   position: relative;
@@ -128,9 +139,9 @@ input[type="checkbox"] {
   background-color: #ffffff;
   transition: background-color 0.5s, border-color 0.5s; }
   input[type="checkbox"]:hover {
-    border-color: #FFabab; }
+    border-color: #3295d5; }
   input[type="checkbox"]:checked {
-    background-color: #FFabab; }
+    background-color: #3295d5; }
     input[type="checkbox"]:checked::after {
       content: "✔";
       color: #f5f5f5;
@@ -145,8 +156,8 @@ input[type="text"], input[type="password"] {
   padding-left: 52pt;
   transition: 0.5s; }
   input[type="text"]:hover, input[type="password"]:hover {
-    border: solid 1px #FFabab; }
+    border: solid 1px #3295d5; }
   input[type="text"]:hover ~ i, input[type="password"]:hover ~ i {
-    color: #FFabab; }
+    color: #3295d5; }
 
 /*# sourceMappingURL=style.css.map */
