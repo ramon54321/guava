@@ -1,4 +1,4 @@
-package guava;
+package guava.rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -7,6 +7,6 @@ import javax.ws.rs.Path;
 public class Hello {
     @GET
     public String message() {
-	return "5th hello!";
+	return "6th hello!";
     }
 }

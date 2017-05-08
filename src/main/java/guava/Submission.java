@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package guava;
 
-/**
- *
- * @author Hannu
- */
 public class Submission {
     
     private int id;
@@ -20,7 +11,6 @@ public class Submission {
     private String comment;
     
     public Submission() {
-        
     }
     
     public Submission(int id, int assignmentId, int studentUserId, String answer, String submittedDate, int grade, String comment) {
@@ -88,5 +78,4 @@ public class Submission {
     public void setComment(String comment) {
         this.comment = comment;
     }
-    
 }
