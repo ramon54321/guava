@@ -69,7 +69,7 @@ class TableLine extends React.Component {
                         <div className="button" onClick={
                           function(){
                             mainSheet.setState(prevState => ({currentPopup: null}));
-                          }  
+                          }
                         }>SUBMIT</div>
                         <div className="infoCentered">Need help submitting? <span className="link">Click Here.</span></div>
                       </div>
@@ -178,10 +178,10 @@ class App extends React.Component {
         console.log("Trying rest now");
         $.ajax({
             type: "GET",
-            url: /* "rest/assignment" */ "assignmentRestStub",
+            url: "rest/assignment" /* "assignmentRestStub" */,
             async: false,
             success : function(data) {
-              assignments = /* data */ JSON.parse(data);
+              assignments =  data; /* JSON.parse(data) */;
             }
         });
 
