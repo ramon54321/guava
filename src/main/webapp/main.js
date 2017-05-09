@@ -184,6 +184,7 @@ class App extends React.Component {
             url: "rest/assignment" /* "assignmentRestStub"*/,
             async: false,
             success : function(data) {
+              console.log(data);
               assignments = JSON.parse(data);
             }
         });
