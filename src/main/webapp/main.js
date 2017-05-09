@@ -178,6 +178,13 @@ class App extends React.Component {
       case 'assignments':
         var titles = ['UML Diagram 1', 'Learn Maven', 'Presentation', 'English Worksheet', 'UML Activity Diagram', 'Algorithms Stack Worksheet', 'Java Collections Tutorial'];
 
+        var assignments = [];
+
+        console.log("Trying rest now");
+        $.get( "rest/assignment", function( data ) {
+          console.log(data);
+        });
+
         return(
           <div>
             {function(){
