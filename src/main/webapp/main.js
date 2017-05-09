@@ -176,13 +176,16 @@ class App extends React.Component {
         );
         break;
       case 'assignments':
-        var titles = ['UML Diagram 1', 'Learn Maven', 'Presentation', 'English Worksheet', 'UML Activity Diagram', 'Algorithms Stack Worksheet', 'Java Collections Tutorial'];
-
-        var assignments = [];
+        var assignments;
 
         console.log("Trying rest now");
-        $.get( "rest/assignment", function( data ) {
-          console.log(data);
+        $.ajax({
+            type: "GET",
+            url: "rest/assignment" /* "assignmentRestStub"*/,
+            async: false,
+            success : function(data) {
+              assignments = JSON.parse(data);
+            }
         });
 
         return(
@@ -196,9 +199,9 @@ class App extends React.Component {
             <div className="spacer" style={{height: '20vh'}}></div>
             <div className="sheet main">
               <h2>Assignments</h2>
-              {titles.map(function(title, index){
-                    return <TableLine completed={Math.random() * 100} title={title} dueDate="26 March" grade="4" maxGrade="5"/>;
-                  })}
+              {assignments.map(function(obj){
+                return <TableLine completed={Math.random() * 100} title={obj.title} dueDate={obj.deadline} grade="4" maxGrade={obj.maxGrade}/>;
+              })}
             </div>
           </div>
         );
