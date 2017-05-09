@@ -64,17 +64,14 @@ class TableLine extends React.Component {
                       <div className="sheet">
                         <h2>Submit Assignment</h2>
                         <div className="field">
-                          <input type="text" placeholder="Username"/>
-                          <div className="fieldSplitter"></div>
-                          <i className="fa fa-user fa-2x" style={{fontSize: '20pt'}}></i>
+                          <textarea placeholder="Submission"/>
                         </div>
-                        <div className="field">
-                          <input type="password" placeholder="Password"/>
-                          <div className="fieldSplitter"></div>
-                          <i className="fa fa-key fa-2x" style={{fontSize: '20pt'}}></i>
-                        </div>
-                        <div className="button" onClick={() => this.switchTo("assignments")}>LOG IN</div>
-                        <div className="infoCentered">New Here? <span className="link" onClick={() => this.switchTo("signup")}>Sign Up!</span></div>
+                        <div className="button" onClick={
+                          function(){
+                            mainSheet.setState(prevState => ({currentPopup: null}));
+                          }  
+                        }>SUBMIT</div>
+                        <div className="infoCentered">Need help submitting? <span className="link">Click Here.</span></div>
                       </div>
                     </div>}));
                 }}>SUBMIT</div>);
@@ -181,10 +178,10 @@ class App extends React.Component {
         console.log("Trying rest now");
         $.ajax({
             type: "GET",
-            url: "rest/assignment",
+            url: /* "rest/assignment" */ "assignmentRestStub",
             async: false,
             success : function(data) {
-              assignments = data;
+              assignments = /* data */ JSON.parse(data);
             }
         });
 
