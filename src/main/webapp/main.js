@@ -181,11 +181,10 @@ class App extends React.Component {
         console.log("Trying rest now");
         $.ajax({
             type: "GET",
-            url: "rest/assignment" /* "assignmentRestStub"*/,
+            url: "rest/assignment",
             async: false,
             success : function(data) {
-              console.log(data);
-              assignments = JSON.parse(data);
+              assignments = data;
             }
         });
 
