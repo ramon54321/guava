@@ -64,17 +64,14 @@ class TableLine extends React.Component {
                       <div className="sheet">
                         <h2>Submit Assignment</h2>
                         <div className="field">
-                          <input type="text" placeholder="Username"/>
-                          <div className="fieldSplitter"></div>
-                          <i className="fa fa-user fa-2x" style={{fontSize: '20pt'}}></i>
+                          <textarea placeholder="Submission"/>
                         </div>
-                        <div className="field">
-                          <input type="password" placeholder="Password"/>
-                          <div className="fieldSplitter"></div>
-                          <i className="fa fa-key fa-2x" style={{fontSize: '20pt'}}></i>
-                        </div>
-                        <div className="button" onClick={() => this.switchTo("assignments")}>LOG IN</div>
-                        <div className="infoCentered">New Here? <span className="link" onClick={() => this.switchTo("signup")}>Sign Up!</span></div>
+                        <div className="button" onClick={
+                          function(){
+                            mainSheet.setState(prevState => ({currentPopup: null}));
+                          }
+                        }>SUBMIT</div>
+                        <div className="infoCentered">Need help submitting? <span className="link">Click Here.</span></div>
                       </div>
                     </div>}));
                 }}>SUBMIT</div>);
@@ -176,7 +173,17 @@ class App extends React.Component {
         );
         break;
       case 'assignments':
-        var titles = ['UML Diagram 1', 'Learn Maven', 'Presentation', 'English Worksheet', 'UML Activity Diagram', 'Algorithms Stack Worksheet', 'Java Collections Tutorial'];
+        var assignments;
+
+        console.log("Trying rest now");
+        $.ajax({
+            type: "GET",
+            url: "rest/assignment" /* "assignmentRestStub" */,
+            async: false,
+            success : function(data) {
+              assignments =  data; /* JSON.parse(data) */;
+            }
+        });
 
         return(
           <div>
@@ -189,9 +196,9 @@ class App extends React.Component {
             <div className="spacer" style={{height: '20vh'}}></div>
             <div className="sheet main">
               <h2>Assignments</h2>
-              {titles.map(function(title, index){
-                    return <TableLine completed={Math.random() * 100} title={title} dueDate="26 March" grade="4" maxGrade="5"/>;
-                  })}
+              {assignments.map(function(obj){
+                return <TableLine completed={Math.random() * 100} title={obj.title} dueDate={obj.deadline} grade="4" maxGrade={obj.maxGrade}/>;
+              })}
             </div>
           </div>
         );

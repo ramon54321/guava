@@ -146,6 +146,17 @@ i
   &.centered
     left: 140pt
 
+textarea
+  -webkit-appearance: none
+  resize: none
+  width: calc(100% - 6px)
+  height: 50vh
+  border: solid 1px $lightSeparator
+  background-color: $backgroundColor_sheet
+  transition: background-color 0.5s, border-color 0.5s
+  &:hover
+    border-color: $primaryColor
+
 input
   &[type="checkbox"]
     -webkit-appearance: none
