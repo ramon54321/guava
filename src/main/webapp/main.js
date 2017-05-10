@@ -130,7 +130,6 @@ class TableLine extends React.Component {
   }
 
   getGrade() {
-    var grade = 0;
     console.log("Getting submission grade");
     $.ajax({
         type: "GET",
@@ -141,12 +140,6 @@ class TableLine extends React.Component {
           console.log(data);
         }
     });
-
-    if(!grade) {
-      this.setState(prevState => ({submitted: false}));
-    } else {
-      this.setState(prevState => ({submitted: true}));
-    }
 
     return grade;
   }
@@ -184,7 +177,7 @@ class TableLine extends React.Component {
         <div className="assignmentCell">
           <div className="textCenter">
             {function() {
-              if(self.state.submitted){
+              if(self.getGrade()){
                 return ("SUBMITTED");
               } else {
                 return (<div className="button small" onClick={function(){
