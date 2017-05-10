@@ -36,7 +36,7 @@ class TableLineSubmission extends React.Component {
       <div className="assignmentRow">
         <div className="assignmentCell">
           <div className="textCenter">
-          
+
           </div>
         </div>
         <div className="assignmentCell">
@@ -57,7 +57,7 @@ class TableLineSubmission extends React.Component {
         <div className="assignmentCell">
           <div className="textCenter">
             {function() {
-              if(self.state.grade || self.state.grade == 0){
+              if(self.state.grade){
                 return ("SUBMITTED");
               } else {
                 return (<div className="button small" onClick={function(){
