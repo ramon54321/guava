@@ -285,10 +285,10 @@ class App extends React.Component {
         console.log("Trying rest now");
         $.ajax({
             type: "GET",
-            url: /* "rest/assignment" */  "assignmentRestStub" ,
+            url: "rest/assignment"  /* "assignmentRestStub"*/ ,
             async: false,
             success : function(data) {
-              assignments = /* data; */  JSON.parse(data) ;
+              assignments = data;  /* JSON.parse(data) */ ;
             }
         });
 
