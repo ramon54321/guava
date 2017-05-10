@@ -17,7 +17,7 @@ class TableLineSubmission extends React.Component {
       <div className="assignmentRow">
         <div className="assignmentCell">
           <div className="textCenter">
-
+            {this.props.id}
           </div>
         </div>
         <div className="assignmentCell">
@@ -93,12 +93,10 @@ class TableLine extends React.Component {
   submitSubmission() {
 
     var newSubmission = {
-      AssignmentID: "1",
-      StudentUserID: "0",
-      Answer: "This is my answer to the assignment on some assignment.",
-      SubmittedDate: "2012-04-23",
-      Grade: "2",
-      Comment: "Well done, but there are parts that need to be redone."
+      assignmentId: this.props.id,
+      studentUserId: "0",
+      answer: "This is my answer to the assignment on some assignment.",
+      submittedDate: "2012-04-23"
     };
 
     console.log("Trying rest now");
@@ -304,7 +302,7 @@ class App extends React.Component {
               <h2>Assignments</h2>
               <div className="headerExit" onClick={() => this.switchTo("login")}>X</div>
               {assignments.map(function(obj){
-                return <TableLine completed={Math.random() * 100} title={obj.title} dueDate={obj.deadline} grade="4" maxGrade={obj.maxGrade}/>;
+                return <TableLine id={obj.id} courseId={obj.courseId} completed={Math.random() * 100} title={obj.title} dueDate={obj.deadline} grade="4" maxGrade={obj.maxGrade}/>;
               })}
             </div>
           </div>
@@ -316,12 +314,13 @@ class App extends React.Component {
         console.log("Trying rest now");
         $.ajax({
             type: "GET",
-            url: /* "rest/submission/" */  "submissionRestStub" ,
+            url:  "rest/submission"  /* "submissionRestStub" */,
             async: false,
             success : function(data) {
-              submissions = /* data; */  JSON.parse(data) ;
+              submissions = data; /*  JSON.parse(data) */;
             }
         });
+        console.log(submissions);
 
         return(
           <div>
@@ -336,7 +335,7 @@ class App extends React.Component {
               <h2>Submissions</h2>
               <div className="headerExit" onClick={() => this.switchTo("login")}>X</div>
               {submissions.map(function(obj){
-                return <TableLineSubmission />;
+                return <TableLineSubmission id={obj.id}/>;
               })}
             </div>
           </div>
