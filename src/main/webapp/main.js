@@ -141,6 +141,13 @@ class TableLine extends React.Component {
           console.log(data);
         }
     });
+
+    if(!grade) {
+      this.setState(prevState => ({submitted: false}));
+    } else {
+      this.setState(prevState => ({submitted: true}));
+    }
+
     return grade;
   }
 
