@@ -72,7 +72,7 @@ class TableLineSubmission extends React.Component {
                         <div className="field">
                           <input type="text" placeholder="Grade" id="gradingGrade"/>
                         </div>
-                        <div className="button" onClick={() => self.gradeSubmission()}>RETURN SUBMISSION</div>
+                        <div className="button" onClick={() => self.gradeSubmission()}>GRADE SUBMISSION</div>
                         <div className="infoCentered">Need help submitting? <span className="link">Click Here.</span></div>
                       </div>
                     </div>}));
