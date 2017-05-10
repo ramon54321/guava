@@ -58,13 +58,13 @@ class TableLineSubmission extends React.Component {
           <div className="textCenter">
             {function() {
               if(self.state.grade){
-                return ("SUBMITTED");
+                return ("GRADED");
               } else {
                 return (<div className="button small" onClick={function(){
                   mainSheet.setState(prevState => ({currentPopup:
                     <div className="popupBack">
                       <div className="sheet">
-                        <h2>Submit Assignment</h2>
+                        <h2>Grade Assignment</h2>
                         <div className="headerExit" onClick={() => mainSheet.switchTo("submissions")}>X</div>
                         <div className="field">
                           <textarea placeholder="Comment"/>
@@ -76,7 +76,7 @@ class TableLineSubmission extends React.Component {
                         <div className="infoCentered">Need help submitting? <span className="link">Click Here.</span></div>
                       </div>
                     </div>}));
-                }}>RETURN</div>);
+                }}>GRADE</div>);
               }
             }()}
           </div>
