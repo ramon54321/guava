@@ -364,7 +364,7 @@ class App extends React.Component {
               <h2>Submissions</h2>
               <div className="headerExit" onClick={() => this.switchTo("login")}>X</div>
               {submissions.map(function(obj){
-                return <TableLineSubmission id={obj.submissionId}/>;
+                return <TableLineSubmission id={obj.id}/>;
               })}
             </div>
           </div>
