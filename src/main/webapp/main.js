@@ -129,6 +129,21 @@ class TableLine extends React.Component {
     mainSheet.setState(prevState => ({currentPopup: null}));
   }
 
+  getGrade() {
+    var grade = 0;
+    console.log("Getting submission grade");
+    $.ajax({
+        type: "GET",
+        url:  "rest/submission/findByStudent/" + this.props.id + "/0",
+        async: false,
+        success : function(data) {
+          grade = data.grade;
+          console.log(data);
+        }
+    });
+    return grade;
+  }
+
   render(){
     var self = this;
     return (
@@ -156,7 +171,7 @@ class TableLine extends React.Component {
         </div>
         <div className="assignmentCell">
           <div className="textCenter">
-            {this.props.grade}/{this.props.maxGrade}
+            {self.getGrade()}/{this.props.maxGrade}
           </div>
         </div>
         <div className="assignmentCell">
