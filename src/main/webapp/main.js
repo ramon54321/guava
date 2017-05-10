@@ -17,7 +17,7 @@ class TableLineSubmission extends React.Component {
       <div className="assignmentRow">
         <div className="assignmentCell">
           <div className="textCenter">
-
+            {this.props.id}
           </div>
         </div>
         <div className="assignmentCell">
@@ -317,12 +317,13 @@ class App extends React.Component {
         console.log("Trying rest now");
         $.ajax({
             type: "GET",
-            url:  "rest/submission/"  /* "submissionRestStub" */,
+            url:  "rest/submission"  /* "submissionRestStub" */,
             async: false,
             success : function(data) {
               submissions = data; /*  JSON.parse(data) */;
             }
         });
+        console.log(submissions);
 
         return(
           <div>
@@ -337,7 +338,7 @@ class App extends React.Component {
               <h2>Submissions</h2>
               <div className="headerExit" onClick={() => this.switchTo("login")}>X</div>
               {submissions.map(function(obj){
-                return <TableLineSubmission />;
+                return <TableLineSubmission id={obj.id}/>;
               })}
             </div>
           </div>
