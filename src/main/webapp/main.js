@@ -1,5 +1,6 @@
 var mainSheet;
 
+var isStudent = null;
 
 // Components
 
@@ -63,6 +64,7 @@ class TableLine extends React.Component {
                     <div className="popupBack">
                       <div className="sheet">
                         <h2>Submit Assignment</h2>
+                        <div className="headerExit" onClick={() => mainSheet.switchTo("assignments")}>X</div>
                         <div className="field">
                           <textarea placeholder="Submission"/>
                         </div>
@@ -97,10 +99,23 @@ class App extends React.Component {
   }
 
   switchTo(pageToSwitchTo){
+    mainSheet.setState(prevState => ({currentPopup: null}));
     this.setState(prevState => ({
       page: pageToSwitchTo
     }));
     console.log("Switched to " + pageToSwitchTo);
+  }
+
+  setIsStudent(uservalue){
+    var username = $("#usernameSignin").val();
+    console.log(username);
+    if(username == "Bob") {
+      isStudent = true;
+      this.switchTo("assignments");
+    } else {
+      isStudent = false;
+      this.switchTo("submissions");
+    }
   }
 
   render(){
@@ -119,7 +134,7 @@ class App extends React.Component {
             <div className="sheet">
               <h2>Log In</h2>
               <div className="field">
-                <input type="text" placeholder="Username"/>
+                <input type="text" placeholder="Username" id="usernameSignin"/>
                 <div className="fieldSplitter"></div>
                 <i className="fa fa-user fa-2x" style={{fontSize: '20pt'}}></i>
               </div>
@@ -128,8 +143,8 @@ class App extends React.Component {
                 <div className="fieldSplitter"></div>
                 <i className="fa fa-key fa-2x" style={{fontSize: '20pt'}}></i>
               </div>
-              <div className="button" onClick={() => this.switchTo("assignments")}>LOG IN</div>
-              <div className="infoCentered">New Here? <span className="link" onClick={() => this.switchTo("signup")}>Sign Up!</span></div>
+              <div className="button" onClick={() => self.setIsStudent()}>LOG IN</div>
+              <div className="infoCentered">New Here? <span className="link" onClick={() => self.switchTo("signup")}>Sign Up!</span></div>
             </div>
           </div>
         );
@@ -146,6 +161,7 @@ class App extends React.Component {
             <div className="spacer" style={{height: '20vh'}}></div>
             <div className="sheet">
               <h2>Sign Up</h2>
+              <div className="headerExit" onClick={() => this.switchTo("login")}>X</div>
               <div className="field">
                 <input type="text" placeholder="Username"/>
                 <div className="fieldSplitter"></div>
@@ -178,10 +194,10 @@ class App extends React.Component {
         console.log("Trying rest now");
         $.ajax({
             type: "GET",
-            url: "rest/assignment" /* "assignmentRestStub" */,
+            url: /* "rest/assignment" */  "assignmentRestStub" ,
             async: false,
             success : function(data) {
-              assignments =  data; /* JSON.parse(data) */;
+              assignments = /* data; */  JSON.parse(data) ;
             }
         });
 
@@ -196,6 +212,39 @@ class App extends React.Component {
             <div className="spacer" style={{height: '20vh'}}></div>
             <div className="sheet main">
               <h2>Assignments</h2>
+              <div className="headerExit" onClick={() => this.switchTo("login")}>X</div>
+              {assignments.map(function(obj){
+                return <TableLine completed={Math.random() * 100} title={obj.title} dueDate={obj.deadline} grade="4" maxGrade={obj.maxGrade}/>;
+              })}
+            </div>
+          </div>
+        );
+        break;
+      case 'submissions':
+        var submissions;
+
+        console.log("Trying rest now");
+        $.ajax({
+            type: "GET",
+            url: /* "rest/submission/" */  "submissionRestStub" ,
+            async: false,
+            success : function(data) {
+              submissions = /* data; */  JSON.parse(data) ;
+            }
+        });
+
+        return(
+          <div>
+            {function(){
+              if(self.state.currentPopup !== null) {
+                console.log("Rendering popup!");
+                return (self.state.currentPopup);
+              }
+            }()}
+            <div className="spacer" style={{height: '20vh'}}></div>
+            <div className="sheet main">
+              <h2>Submissions</h2>
+              <div className="headerExit" onClick={() => this.switchTo("login")}>X</div>
               {assignments.map(function(obj){
                 return <TableLine completed={Math.random() * 100} title={obj.title} dueDate={obj.deadline} grade="4" maxGrade={obj.maxGrade}/>;
               })}
