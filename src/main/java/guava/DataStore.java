@@ -18,7 +18,6 @@ public class DataStore {
     	assignments.put(3, new Assignment(3, 2, 3, "2017-06-03", "Exercise 3", "", 5));
 	
 	submissions = new TreeMap<>();
-	submissions.put(1, new Submission(1, 1, 1, "Some answer", "2017-06-01", 3, ""));
     }
     
     public static DataStore get() {
