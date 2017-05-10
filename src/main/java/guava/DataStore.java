@@ -43,6 +43,15 @@ public class DataStore {
     public Submission getSubmission(int id) {
 	return submissions.get(id);
     }
+
+    public Submission findSubmissionByStudent(int assignmentId, int studentId) {
+	for (Submission s : submissions.values()) {
+	    if (s.getAssignmentId() == assignmentId && s.getStudentUserId() == studentId) {
+		return s;
+	    }
+	}
+	return null;
+    }
     
     public void addSubmission(Submission s) {
 	submissions.put(s.getId(), s);

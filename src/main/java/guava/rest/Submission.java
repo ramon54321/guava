@@ -37,4 +37,11 @@ public class Submission {
 	DataStore.get().getSubmission(Integer.parseInt(id)).setGrade(Integer.parseInt(value));
 	return Response.ok().build();
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("findByStudent/{assignmentId}/{studentId}")
+    public Response findByStudent(@PathParam("assignmentId") String assignmentId, @PathParam("studentId") String studentId, @Context HttpServletRequest request) {
+	return Response.ok(DataStore.get().findSubmissionByStudent(Integer.parseInt(assignmentId), Integer.parseInt(studentId))).build();
+    }
 }
