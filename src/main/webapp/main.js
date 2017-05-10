@@ -93,12 +93,13 @@ class TableLine extends React.Component {
   submitSubmission() {
 
     var newSubmission = {
-      AssignmentID: "1",
-      StudentUserID: "0",
-      Answer: "This is my answer to the assignment on some assignment.",
-      SubmittedDate: "2012-04-23",
-      Grade: "2",
-      Comment: "Well done, but there are parts that need to be redone."
+      id: "0",
+      assignmentID: "1",
+      studentUserID: "0",
+      answer: "This is my answer to the assignment on some assignment.",
+      submittedDate: "2012-04-23",
+      grade: "2",
+      comment: "Well done, but there are parts that need to be redone."
     };
 
     console.log("Trying rest now");
@@ -316,10 +317,10 @@ class App extends React.Component {
         console.log("Trying rest now");
         $.ajax({
             type: "GET",
-            url: /* "rest/submission/" */  "submissionRestStub" ,
+            url:  "rest/submission/"  /* "submissionRestStub" */,
             async: false,
             success : function(data) {
-              submissions = /* data; */  JSON.parse(data) ;
+              submissions = data; /*  JSON.parse(data) */;
             }
         });
 
