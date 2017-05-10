@@ -18,7 +18,7 @@ class TableLineSubmission extends React.Component {
 
     console.log("Trying rest now - grading assignment");
     $.ajax({
-        type: "POST",
+        type: "PUT",
         url:  "rest/submission/" + submissionId + "/grade/" +  grade,
         async: false,
         success : function(data) {
