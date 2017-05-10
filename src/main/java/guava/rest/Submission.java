@@ -1,6 +1,6 @@
 package guava.rest;
 
-import java.util.ArrayList;
+import guava.DataStore;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -19,15 +19,14 @@ public class Submission {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllSubmissions() {
-	ArrayList<guava.model.Submission> a = new ArrayList<>();
-	a.add(new guava.model.Submission(1, 1, 1, "Some answer", "2017-06-01", 3, ""));
-	return Response.ok(a).build();
+	return Response.ok(DataStore.get().getSubmissions()).build();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response postSubmission(Submission submission, @Context HttpServletRequest request) {
+    public Response postSubmission(guava.model.Submission submission, @Context HttpServletRequest request) {
+	DataStore.get().addSubmission(submission);
 	return Response.ok().build();
     }
 
