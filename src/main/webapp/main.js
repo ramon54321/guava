@@ -35,7 +35,12 @@ class TableLineSubmission extends React.Component {
       <div className="assignmentRow">
         <div className="assignmentCell">
           <div className="textCenter">
-            {this.props.id}
+            {this.props.user}
+          </div>
+        </div>
+        <div className="assignmentCell">
+          <div className="textCenter">
+            {this.props.course}
           </div>
         </div>
         <div className="assignmentCell">
@@ -45,12 +50,7 @@ class TableLineSubmission extends React.Component {
         </div>
         <div className="assignmentCell">
           <div className="textCenter">
-
-          </div>
-        </div>
-        <div className="assignmentCell">
-          <div className="textCenter">
-
+            {gradeSubmission()}/5
           </div>
         </div>
         <div className="assignmentCell">
@@ -364,7 +364,7 @@ class App extends React.Component {
               <h2>Submissions</h2>
               <div className="headerExit" onClick={() => this.switchTo("login")}>X</div>
               {submissions.map(function(obj){
-                return <TableLineSubmission id={obj.id}/>;
+                return <TableLineSubmission id={obj.id} user="Bob" course="Example Course"/>;
               })}
             </div>
           </div>
