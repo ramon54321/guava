@@ -8,7 +8,7 @@ class TableLineSubmission extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = { grade: this.props.grade };
   }
 
   gradeSubmission() {
@@ -26,6 +26,7 @@ class TableLineSubmission extends React.Component {
         }
     });
 
+    this.setState(prevState => ({grade: grade}));
     mainSheet.setState(prevState => ({currentPopup: null}));
   }
 
@@ -35,28 +36,28 @@ class TableLineSubmission extends React.Component {
       <div className="assignmentRow">
         <div className="assignmentCell">
           <div className="textCenter">
-            {this.props.id}
-          </div>
-        </div>
-        <div className="assignmentCell">
-          <div className="textCenter">
 
           </div>
         </div>
         <div className="assignmentCell">
           <div className="textCenter">
-
+            {this.props.user}
           </div>
         </div>
         <div className="assignmentCell">
           <div className="textCenter">
-
+            {this.props.course}
+          </div>
+        </div>
+        <div className="assignmentCell">
+          <div className="textCenter">
+            {this.state.grade}/5
           </div>
         </div>
         <div className="assignmentCell">
           <div className="textCenter">
             {function() {
-              if(self.state.submitted){
+              if(self.state.grade){
                 return ("SUBMITTED");
               } else {
                 return (<div className="button small" onClick={function(){
@@ -131,6 +132,7 @@ class TableLine extends React.Component {
 
   getGrade() {
     var grade = 0;
+
     console.log("Getting submission grade");
     $.ajax({
         type: "GET",
@@ -141,6 +143,7 @@ class TableLine extends React.Component {
           console.log(data);
         }
     });
+
     return grade;
   }
 
@@ -177,7 +180,8 @@ class TableLine extends React.Component {
         <div className="assignmentCell">
           <div className="textCenter">
             {function() {
-              if(self.state.submitted){
+              var grade = self.getGrade();
+              if(grade || grade == 0){
                 return ("SUBMITTED");
               } else {
                 return (<div className="button small" onClick={function(){
@@ -364,7 +368,7 @@ class App extends React.Component {
               <h2>Submissions</h2>
               <div className="headerExit" onClick={() => this.switchTo("login")}>X</div>
               {submissions.map(function(obj){
-                return <TableLineSubmission id={obj.id}/>;
+                return <TableLineSubmission id={obj.id} user="Bob" course="Example Course" grade={obj.grade}/>;
               })}
             </div>
           </div>
