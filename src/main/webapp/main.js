@@ -130,6 +130,8 @@ class TableLine extends React.Component {
   }
 
   getGrade() {
+    var grade = 0;
+
     console.log("Getting submission grade");
     $.ajax({
         type: "GET",
