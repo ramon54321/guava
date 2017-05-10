@@ -94,8 +94,8 @@ class TableLine extends React.Component {
 
     var newSubmission = {
       id: "0",
-      assignmentID: "1",
-      studentUserID: "0",
+      assignmentId: "1",
+      studentUserId: "0",
       answer: "This is my answer to the assignment on some assignment.",
       submittedDate: "2012-04-23",
       grade: "2",
