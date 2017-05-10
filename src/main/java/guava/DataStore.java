@@ -31,6 +31,10 @@ public class DataStore {
 	return assignments.values();
     }
     
+    public Assignment getAssignment(int id) {
+	return assignments.get(id);
+    }
+    
     public void addAssignment(Assignment a) {
 	assignments.put(a.getId(), a);
     }
