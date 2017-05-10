@@ -22,6 +22,13 @@ public class Submission {
 	return Response.ok(DataStore.get().getSubmissions()).build();
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{id}")
+    public Response getSubmission(@PathParam("id") String id) {
+	return Response.ok(DataStore.get().getSubmission(Integer.parseInt(id))).build();
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
