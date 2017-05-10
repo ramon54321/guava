@@ -36,6 +36,11 @@ class TableLineSubmission extends React.Component {
       <div className="assignmentRow">
         <div className="assignmentCell">
           <div className="textCenter">
+          
+          </div>
+        </div>
+        <div className="assignmentCell">
+          <div className="textCenter">
             {this.props.user}
           </div>
         </div>
@@ -46,18 +51,13 @@ class TableLineSubmission extends React.Component {
         </div>
         <div className="assignmentCell">
           <div className="textCenter">
-
-          </div>
-        </div>
-        <div className="assignmentCell">
-          <div className="textCenter">
             {this.state.grade}/5
           </div>
         </div>
         <div className="assignmentCell">
           <div className="textCenter">
             {function() {
-              if(self.state.grade){
+              if(self.state.grade || self.state.grade == 0){
                 return ("SUBMITTED");
               } else {
                 return (<div className="button small" onClick={function(){
@@ -180,7 +180,8 @@ class TableLine extends React.Component {
         <div className="assignmentCell">
           <div className="textCenter">
             {function() {
-              if(self.getGrade()){
+              var grade = self.getGrade();
+              if(grade || grade == 0){
                 return ("SUBMITTED");
               } else {
                 return (<div className="button small" onClick={function(){
