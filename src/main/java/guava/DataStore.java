@@ -40,6 +40,10 @@ public class DataStore {
 	return submissions.values();
     }
     
+    public Submission getSubmission(int id) {
+	return submissions.get(id);
+    }
+    
     public void addSubmission(Submission s) {
 	submissions.put(s.getId(), s);
     }

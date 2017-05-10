@@ -34,6 +34,7 @@ public class Submission {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{id}/grade/{value}")
     public Response gradeSubmission(@PathParam("id") String id, @PathParam("value") String value, @Context HttpServletRequest request) {
+	DataStore.get().getSubmission(Integer.parseInt(id)).setGrade(Integer.parseInt(value));
 	return Response.ok().build();
     }
 }
