@@ -93,7 +93,6 @@ class TableLine extends React.Component {
   submitSubmission() {
 
     var newSubmission = {
-      ID: "21",
       AssignmentID: "1",
       StudentUserID: "0",
       Answer: "This is my answer to the assignment on some assignment.",
