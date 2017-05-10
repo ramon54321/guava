@@ -11,6 +11,24 @@ class TableLineSubmission extends React.Component {
     this.state = {};
   }
 
+  gradeSubmission() {
+
+    var grade = $("#gradingGrade").val();
+    var submissionId = this.props.id;
+
+    console.log("Trying rest now - grading assignment");
+    $.ajax({
+        type: "POST",
+        url:  "rest/submission/" + submissionId + "/grade/" +  grade,
+        async: false,
+        success : function(data) {
+          console.log(data);
+        }
+    });
+
+    mainSheet.setState(prevState => ({currentPopup: null}));
+  }
+
   render(){
     var self = this;
     return (
@@ -51,13 +69,9 @@ class TableLineSubmission extends React.Component {
                           <textarea placeholder="Comment"/>
                         </div>
                         <div className="field">
-                          <input type="text" placeholder="Grade"/>
+                          <input type="text" placeholder="Grade" id="gradingGrade"/>
                         </div>
-                        <div className="button" onClick={
-                          function(){
-                            mainSheet.setState(prevState => ({currentPopup: null}));
-                          }
-                        }>RETURN SUBMISSION</div>
+                        <div className="button" onClick={() => self.gradeSubmission()}>RETURN SUBMISSION</div>
                         <div className="infoCentered">Need help submitting? <span className="link">Click Here.</span></div>
                       </div>
                     </div>}));
@@ -108,7 +122,6 @@ class TableLine extends React.Component {
         data: JSON.stringify(newSubmission),
         async: false,
         success : function(data) {
-          //assignments = /* data; */  JSON.parse(data) ;
           console.log(data);
         }
     });
@@ -336,7 +349,7 @@ class App extends React.Component {
               <h2>Submissions</h2>
               <div className="headerExit" onClick={() => this.switchTo("login")}>X</div>
               {submissions.map(function(obj){
-                return <TableLineSubmission id={obj.id}/>;
+                return <TableLineSubmission id={obj.submissionId}/>;
               })}
             </div>
           </div>
