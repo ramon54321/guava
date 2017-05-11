@@ -2,6 +2,10 @@ package guava;
 
 import guava.model.Assignment;
 import guava.model.Submission;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Collection;
 import java.util.TreeMap;
 
@@ -12,12 +16,8 @@ public class DataStore {
     private TreeMap<Integer, Submission> submissions;
     
     private DataStore() {
-    	assignments = new TreeMap<>();
-    	assignments.put(1, new Assignment(1, 2, 3, "2017-06-01", "Exercise 1", "", 5));
-    	assignments.put(2, new Assignment(2, 2, 3, "2017-06-02", "Exercise 2", "", 5));
-    	assignments.put(3, new Assignment(3, 2, 3, "2017-06-03", "Exercise 3", "", 5));
-	
-	submissions = new TreeMap<>();
+	assignments = readFromFile("guava.assignments.dat");
+	submissions = readFromFile("guava.submissions.dat");
     }
     
     public static DataStore get() {
@@ -25,6 +25,26 @@ public class DataStore {
 	    instance = new DataStore();
 	}
 	return instance;
+    }
+
+    private <T> TreeMap<Integer, T> readFromFile(String fileName) {
+	try {
+	    FileInputStream fs = new FileInputStream(fileName);
+	    ObjectInputStream os = new ObjectInputStream(fs);
+	    return (TreeMap<Integer, T>)os.readObject();
+	} catch (Exception ex) {
+	    return new TreeMap<Integer, T>();
+	}
+    }
+    
+    private void writeToFile(String fileName, Object o) {
+	try {
+	    FileOutputStream fs = new FileOutputStream(fileName);
+	    ObjectOutputStream os = new ObjectOutputStream(fs);
+	    os.writeObject(o);
+	    os.flush();
+	} catch (Exception ex) {
+	}
     }
     
     public Collection<Assignment> getAssignments() {
@@ -37,6 +57,7 @@ public class DataStore {
     
     public void addAssignment(Assignment a) {
 	assignments.put(a.getId(), a);
+	writeToFile("guava.assignments.dat", assignments);
     }
     
     public Collection<Submission> getSubmissions() {
@@ -58,5 +79,6 @@ public class DataStore {
     
     public void addSubmission(Submission s) {
 	submissions.put(s.getId(), s);
+	writeToFile("guava.submissions.dat", submissions);
     }
 }
